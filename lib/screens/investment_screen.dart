@@ -61,69 +61,69 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                     child: Text('R\$ 3.200.876,00', style: kHighlightedText,),
                   ),
                   BuildTotal(),
-                  Row(
-                    children: [
-                      Text('Rentabilidade/mês', style: kMyText,),
-                      SizedBox(width: 10,),
-                      BuildProfitability(),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text('CDI', style: kMyText,),
-                      Spacer(),
-                      BuildCDI(),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text('Ganho/mês', style: kMyText,),
-                      Spacer(),
-                      BuildGain(),
-                    ],
-                  ),
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 25,
-                  //       vertical: 15),
-                  //   child: Column(
-                  //     children: [
-                  //       Row(children: [
-                  //         Text('Rentabilidade/mês', style: kMyText,),
-                  //         Spacer(),
-                  //         Text('2.767%', style: kBlueSmaller,)
-                  //       ],),
-                  //       SizedBox(height: 10,),
-                  //       Row(children: [
-                  //         Text('CDI', style: kMyText,),
-                  //         Spacer(),
-                  //         Text('3.45%', style: kBlueSmaller,),
-                  //       ],),
-                  //       SizedBox(height: 10,),
-                  //       Row(children: [
-                  //         Text('Ganho/mês', style: kMyText,),
-                  //         Spacer(),
-                  //         Text('R\$ 1833,23', style: kBlueSmaller,)
-                  //       ],),
-                  //       SizedBox(height: 10,),
-                  //       Divider(color: Colors.grey,),
-                  //       Row(
-                  //         mainAxisAlignment: MainAxisAlignment.end,
-                  //         children: [
-                  //           OutlineButton(
-                  //             borderSide: BorderSide(color: Colors.indigo),
-                  //             onPressed: (){},
-                  //             child: Text('VER MAIS', style: TextStyle(color:
-                  //             Colors.indigo, fontWeight: FontWeight.bold,
-                  //                 fontSize: 16)),
-                  //             shape: RoundedRectangleBorder(
-                  //               borderRadius: BorderRadius.circular(30),
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ],
-                  //   ),
-                  // )
+                  // Row(
+                  //   children: [
+                  //     Text('Rentabilidade/mês', style: kMyText,),
+                  //     SizedBox(width: 10,),
+                  //     BuildProfitability(),
+                  //   ],
+                  // ),
+                  // Row(
+                  //   children: [
+                  //     Text('CDI', style: kMyText,),
+                  //     Spacer(),
+                  //     BuildCDI(),
+                  //   ],
+                  // ),
+                  // Row(
+                  //   children: [
+                  //     Text('Ganho/mês', style: kMyText,),
+                  //     Spacer(),
+                  //     BuildGain(),
+                  //   ],
+                  // ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25,
+                        vertical: 15),
+                    child: Column(
+                      children: [
+                        Row(children: [
+                          Text('Rentabilidade/mês', style: kMyText,),
+                          Spacer(),
+                          Text('2.767%', style: kBlueSmaller,)
+                        ],),
+                        SizedBox(height: 10,),
+                        Row(children: [
+                          Text('CDI', style: kMyText,),
+                          Spacer(),
+                          Text('3.45%', style: kBlueSmaller,),
+                        ],),
+                        SizedBox(height: 10,),
+                        Row(children: [
+                          Text('Ganho/mês', style: kMyText,),
+                          Spacer(),
+                          Text('R\$ 1833,23', style: kBlueSmaller,)
+                        ],),
+                        SizedBox(height: 10,),
+                        Divider(color: Colors.grey,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            OutlineButton(
+                              borderSide: BorderSide(color: Colors.indigo),
+                              onPressed: (){},
+                              child: Text('VER MAIS', style: TextStyle(color:
+                              Colors.indigo, fontWeight: FontWeight.bold,
+                                  fontSize: 16)),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
 
                 ],
               ),
