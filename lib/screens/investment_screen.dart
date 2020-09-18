@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:front_end_pleno_juliana/components/future_builders.dart';
 import 'package:front_end_pleno_juliana/constants.dart';
 import 'package:front_end_pleno_juliana/repos/investment_repo_impl.dart';
+import 'package:intl/intl.dart';
+
 
 class InvestmentScreen extends StatefulWidget {
   static const String id = 'investment_screen';
@@ -10,7 +13,10 @@ class InvestmentScreen extends StatefulWidget {
 }
 
 class _InvestmentScreenState extends State<InvestmentScreen> {
-final repository = InvestmentRepoImpl();
+
+  final repository = InvestmentRepoImpl();
+  var f = new NumberFormat("#,###,###,###", "en_US");
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,7 @@ final repository = InvestmentRepoImpl();
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 120),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -28,48 +34,96 @@ final repository = InvestmentRepoImpl();
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black38,
-                    blurRadius: 6.0,
+                    blurRadius: 2.0,
                     offset: Offset(0, 2),
                   ),
                 ],
               ),
               child: Column(
-                children: <Widget> [
+                children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(children: [Text('Seu Resumo', style: kHighlightedText,)
-                      , Spacer(),
-                      Icon
-                      (Icons.menu)]),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0,
+                        vertical: 25),
+                    child: Row(
+                        children: [Text('Seu resumo', style: kHighlightedText,)
+                          , Spacer(),
+                          Icon
+                            (Icons.more_vert, color: Colors.grey,)
+                        ]),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text('Valor investido', style: TextStyle(color: Colors
-                        .black54, fontSize: 15),),
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      'Valor investido', style: kMyText),
                   ),
-                  Text('R\$ 3.200.876,00', style: kHighlightedText,),
-                  Column(
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Text('R\$ 3.200.876,00', style: kHighlightedText,),
+                  ),
+                  BuildTotal(),
+                  Row(
                     children: [
-                      FutureBuilder<List<Map>>(
-                          future: repository.getWealthSummary(),
-                          builder: (context, snapshot){
-                            if (snapshot.hasError) {
-                              return Text('Error loading data');
-                            } else if (snapshot.hasData) {
-                              final list = snapshot.data;
-                              return ListView.builder(
-                                itemCount: list.length,
-                                  itemBuilder: (context, index) => ListTile(
-                                    title: Text(list[index]['total']),
-                                  ));
-                            } else {
-                              return Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }
-                          }),
+                      Text('Rentabilidade/mês', style: kMyText,),
+                      SizedBox(width: 10,),
+                      BuildProfitability(),
                     ],
-                  )
+                  ),
+                  Row(
+                    children: [
+                      Text('CDI', style: kMyText,),
+                      Spacer(),
+                      BuildCDI(),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text('Ganho/mês', style: kMyText,),
+                      Spacer(),
+                      BuildGain(),
+                    ],
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 25,
+                  //       vertical: 15),
+                  //   child: Column(
+                  //     children: [
+                  //       Row(children: [
+                  //         Text('Rentabilidade/mês', style: kMyText,),
+                  //         Spacer(),
+                  //         Text('2.767%', style: kBlueSmaller,)
+                  //       ],),
+                  //       SizedBox(height: 10,),
+                  //       Row(children: [
+                  //         Text('CDI', style: kMyText,),
+                  //         Spacer(),
+                  //         Text('3.45%', style: kBlueSmaller,),
+                  //       ],),
+                  //       SizedBox(height: 10,),
+                  //       Row(children: [
+                  //         Text('Ganho/mês', style: kMyText,),
+                  //         Spacer(),
+                  //         Text('R\$ 1833,23', style: kBlueSmaller,)
+                  //       ],),
+                  //       SizedBox(height: 10,),
+                  //       Divider(color: Colors.grey,),
+                  //       Row(
+                  //         mainAxisAlignment: MainAxisAlignment.end,
+                  //         children: [
+                  //           OutlineButton(
+                  //             borderSide: BorderSide(color: Colors.indigo),
+                  //             onPressed: (){},
+                  //             child: Text('VER MAIS', style: TextStyle(color:
+                  //             Colors.indigo, fontWeight: FontWeight.bold,
+                  //                 fontSize: 16)),
+                  //             shape: RoundedRectangleBorder(
+                  //               borderRadius: BorderRadius.circular(30),
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ],
+                  //   ),
+                  // )
 
                 ],
               ),

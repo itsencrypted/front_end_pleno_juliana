@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:front_end_pleno_juliana/screens/investment_screen.dart';
 import 'package:front_end_pleno_juliana/screens/welcome_screen.dart';
 
+
 void main() {
   runApp(FliperTeste());
 }
