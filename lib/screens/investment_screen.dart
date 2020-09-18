@@ -60,7 +60,7 @@ final repository = InvestmentRepoImpl();
                               return ListView.builder(
                                 itemCount: list.length,
                                   itemBuilder: (context, index) => ListTile(
-                                    title: Text(list[index]['id']),
+                                    title: Text(list[index]['total']),
                                   ));
                             } else {
                               return Center(

@@ -20,7 +20,7 @@ class InvestmentRepoImpl implements InvestmentRepository {
             '''
             );
             return (response['data']['wealthSummary'] as List)
-                .map((e) => {"id": e['id']})
+                .map((e) => {"total": e['total']})
                 .toList();
       }
 
