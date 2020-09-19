@@ -70,7 +70,8 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                           style: kMyText,
                         ),
                         Spacer(),
-                        BuildProfitability(),
+                        Container(width: 150, height: 40, child:
+                            BuildProfitability()),
                       ],
                     ),
                   ),
@@ -85,7 +86,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                           style: kMyText,
                         ),
                         Spacer(),
-                        BuildCDI(),
+                        Container(width: 150, height: 40, child: BuildCDI()),
                       ],
                     ),
                   ),
@@ -100,7 +101,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                           style: kMyText,
                         ),
                         Spacer(),
-                        BuildGain(),
+                        Container(width: 150, height: 40, child: BuildGain()),
                       ],
                     ),
                   ),
@@ -108,12 +109,13 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20.0),
                     child: Divider(
+                      height: 30,
                       color: Colors.grey,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0),
+                    padding: const EdgeInsets.only(
+                        left: 20.0, right: 20, bottom: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

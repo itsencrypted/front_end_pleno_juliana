@@ -12,7 +12,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.indigo,
       body: Stack(
         children: <Widget>[
           Column(

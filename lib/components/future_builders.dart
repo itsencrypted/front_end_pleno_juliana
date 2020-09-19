@@ -22,7 +22,7 @@ class BuildTotal extends StatelessWidget {
           final model = snapshot.data;
           return ListTile(
                 title: Center(
-                  child: Text('R\$ ${model.total}',
+                  child: Text(brlFormatter.format(model.total),
                     style: kHighlightedText,),
                 ),
               );
@@ -46,31 +46,30 @@ class _BuildCDIState extends State<BuildCDI> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: FutureBuilder<WealthSummaryModel>(
-        future: repository.getWealthSummary(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Text(
-              'Error loading data',
-              style: kBlueSmaller,
-            );
-          }
-          else if (snapshot.hasData) {
-            final model = snapshot.data;
-            return ListTile(
-                  title: Center(
-                    child: Text('${model.cdi}%',
-                      style: kBlueSmaller,),
-                  ),
-                );
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
+    return FutureBuilder<WealthSummaryModel>(
+      future: repository.getWealthSummary(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text(
+            'Error loading data',
+            style: kBlueSmaller,
+          );
+        }
+        else if (snapshot.hasData) {
+          final model = snapshot.data;
+          return ListTile(
+                title: Center(
+                  child: Text(cdiFormatter.format(model
+                  .cdi/100),
+                    style: kBlueSmaller,),
+                ),
+              );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }
@@ -80,31 +79,30 @@ class BuildProfitability extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: FutureBuilder<WealthSummaryModel>(
-        future: repository.getWealthSummary(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Text(
-              'Error loading data',
-              style: kBlueSmaller,
-            );
-          }
-          else if (snapshot.hasData) {
-            final model = snapshot.data;
-            return ListTile(
-                  title: Center(
-                    child: Text('${model.profitability}%',
-                      style: kBlueSmaller,),
-                  ),
-                );
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
+    return FutureBuilder<WealthSummaryModel>(
+      future: repository.getWealthSummary(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text(
+            'Error loading data',
+            style: kBlueSmaller,
+          );
+        }
+        else if (snapshot.hasData) {
+          final model = snapshot.data;
+          return ListTile(
+                title: Center(
+                  child: Text(percentageFormatter.format(model
+                      .profitability/100),
+                    style: kBlueSmaller,),
+                ),
+              );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }
@@ -114,29 +112,27 @@ class BuildGain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: FutureBuilder<WealthSummaryModel>(
-        future: repository.getWealthSummary(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Text(
-              'Error loading data',
-              style: kBlueSmaller,
-            );
-          }
-          else if (snapshot.hasData) {
-            final model = snapshot.data;
-            return ListTile(
-                  title: Text('R\$ ${model.gain}',
-                    style: kBlueSmaller,),
-                );
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
+    return FutureBuilder<WealthSummaryModel>(
+      future: repository.getWealthSummary(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text(
+            'Error loading data',
+            style: kBlueSmaller,
+          );
+        }
+        else if (snapshot.hasData) {
+          final model = snapshot.data;
+          return ListTile(
+                title: Text(brlFormatter.format(model.gain),
+                  style: kBlueSmaller,),
+              );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }
