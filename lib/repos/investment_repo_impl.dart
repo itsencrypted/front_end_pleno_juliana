@@ -1,4 +1,5 @@
 import 'package:front_end_pleno_juliana/constants.dart';
+import 'package:front_end_pleno_juliana/models/wealth_summary.dart';
 import 'package:front_end_pleno_juliana/repos/investment_repo.dart';
 import 'package:hasura_connect/hasura_connect.dart';
 
@@ -7,7 +8,7 @@ class InvestmentRepoImpl implements InvestmentRepository {
       headers: {'x-hasura-admin-secret': 'fliperdevtest2020'});
 
       @override
-      Future<List<Map>> getWealthSummary() async {
+      Future<WealthSummaryModel> getWealthSummary() async {
             final response = await _client.query('''
             query {
                   wealthSummary {
@@ -20,10 +21,7 @@ class InvestmentRepoImpl implements InvestmentRepository {
             }
             '''
             );
-            return (response['data']['wealthSummary'] as List)
-                .map((e) => {"total": e['total'], "cdi": e['cdi'], "gain":
-            e['gain'], "profitability": e['profitability'], })
-                .toList();
+            return WealthSummaryModel.fromMap((response['data']['wealthSummary'][0]));
       }
 
 
